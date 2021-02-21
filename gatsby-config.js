@@ -5,7 +5,20 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: "@prismicio/gatsby-source-prismic-graphql",
+      options: {
+        repositoryName: "brill",
+        pages: [{
+          type: 'Page',
+          match: '/:uid',
+          path: '/',
+          component: require.resolve('./src/templates/page.js')
+        }]
+      }
+    },
     `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
